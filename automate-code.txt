@@ -1,0 +1,20 @@
+commitWithFlag() {
+  local commit_message="$2"
+  local issue_tag="${3:-no-id}"  # Default value is "no-id"
+
+  case "$1" in
+    -f) commit_type="feat";;
+    -fx) commit_type="fix";;
+    -r) commit_type="refactor";;
+    -m) commit_type="merge";;
+    *) echo "Invalid flag. Usage: gitp -f|-fx|-r|-m 'commit_message' ['issue_tag']"
+       return 1
+       ;;
+  }
+
+  git add .
+  git commit -m "$commit_type: $commit_message - issue: $issue_tag"
+  git push
+}
+
+alias gitp=commitWithFlag
