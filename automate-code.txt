@@ -7,7 +7,8 @@ commitWithFlag() {
     -fx) commit_type="fix";;
     -r) commit_type="refactor";;
     -m) commit_type="merge";;
-    *) echo "Invalid flag. Usage: gitp -f|-fx|-r|-m 'commit_message' ['issue_tag']"
+    -a) commit_type="add";;
+    *) echo "Invalid flag. Usage: gitp -f|-fx|-r|-m|-a 'commit_message' ['issue_tag']"
        return 1
        ;;
   }
